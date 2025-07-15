@@ -62,3 +62,8 @@ if buscado in productos:
 else:
     print("No existe un producto con ese código... ")
 
+total = 0
+for datos in productos.values():
+    total+= datos['precio unitario']* datos['stock']
+
+print(f"El valor total del inventario es: Q{total}")
