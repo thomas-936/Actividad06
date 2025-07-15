@@ -10,7 +10,7 @@ for i in range(cantidad):
         else:
             break
 
-    nombre_producto = input("Ingrese el nomnbre de procducto: ")
+    nombre_producto = input("Ingrese el nombre de producto: ")
     categoria = input("Ingrese la categoria del producto: ")
     talla = input("Ingrese la talla del producto: ")
 
@@ -26,8 +26,8 @@ for i in range(cantidad):
 
     while True:
         try:
-            catidad_stock = int(input("Ingrese la cantidad en stock: "))
-            if catidad_stock < 0:
+            cantidad_stock = int(input("Ingrese la cantidad en stock: "))
+            if cantidad_stock < 0:
                 print("Ingrese una cantidad de stock mayor a 0")
             else:
                 break
@@ -39,7 +39,7 @@ for i in range(cantidad):
         "categoria":categoria,
         "talla": talla,
         "precio_unitario": precio_unitario,
-        "stock": catidad_stock,
+        "stock": cantidad_stock,
     }
 
 print("\nLista de Productos: ")
@@ -64,6 +64,18 @@ else:
 
 total = 0
 for datos in productos.values():
-    total+= datos['precio unitario']* datos['stock']
+    total+= datos['precio_unitario']* datos['stock']
 
 print(f"El valor total del inventario es: Q{total}")
+
+conteo_categoria = {}
+for dato in productos.values():
+    cat = dato['categoria']
+    if cat in conteo_categoria:
+        conteo_categoria[cat]+=1
+    else:
+        conteo_categoria[cat]=1
+
+print("\nLa cantidad de productos por categoria es: ")
+for categoria, cant in conteo_categoria.items():
+    print(f"{categoria}: {cant} producto(s)")
